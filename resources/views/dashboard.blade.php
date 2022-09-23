@@ -1,8 +1,11 @@
 <x-app-layout>
+
     <x-slot name="header">
+    <center>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         {{Auth::guard('admin')->user()->name}}
         </h2>
+        </center>
     </x-slot>
 
     <div class="py-12">

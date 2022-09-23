@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,3 +33,15 @@ Route::get('/dashboard', function () {
 })->middleware(['auth:admin'])->name('dashboard');
 
 require __DIR__.'/adminauth.php';
+
+
+/*.............................Car Route...............*/
+Route::get('/carCreate', [CarController::class, 'carCreate'])->name('carCreate')->middleware(['auth:admin']);
+Route::post('/carCreate', [CarController::class, 'carCreateSubmit'])->name('carCreate')->middleware(['auth:admin']);
+
+Route::get('/carinfo', [CarController::class, 'carinfo'])->name('carinfo');
+
+Route::get('/carUpdate/{id}',[CarController::class,'carUpdate'])->name('carUpdate')->middleware(['auth:admin']);
+Route::post('/carUpdate',[CarController::class,'carUpdateSubmit'])->name('carUpdate')->middleware(['auth:admin']);
+
+Route::get('/carDelete/{id}',[CarController::class,'carDelete'])->name('carDelete');
